@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="styleweb.css">
+    <style>
+        body{
+            background-color: azure;
+        }
+    </style>
+    <script src="https://kit.fontawesome.com/66a8f0e51e.js" crossorigin="anonymous"></script>
+
+
+</head>
+<body>
+<div class="menu">
+    <div class="logo"><a href="web.html" target="_blank"><img src="logo.png"  alt=""></a><input placeholder="Từ khóa tìm kiếm" id="search"><label for="search"></label>
+    </div>
+    <ul id="option">
+        <li><i class="fa-solid fa-house" style="color: white"></i><a href="web.html">Trang chủ</a></li>
+        <li><i class="fa-solid fa-location-dot" style="color: white"></i><a href="map.html" target="_blank">Mua trực tiếp</a></li>
+        <li><i class="fa-solid fa-phone" style="color: white"></i><a href="#" onclick="tuvan()">Tư vấn mua xe</a></li>
+        <li><i class="fa-brands fa-servicestack" style="color: white"></i><a href="#" onclick="services()">Dịch vụ</a></li>
+        <li><i class="fa-solid fa-globe" style="color: white"></i><a href="#">Thế giới Mercedes</a></li>
+        <li><i class="fa-solid fa-right-to-bracket" style="color: white"></i><a href="#" onclick="login()" id="login1">Đăng nhập</a></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+
+<span  id="filter1"><input type="checkbox" id="cclass" onchange="filterC()"><label for="cclass">C-Class</label>
+    <input type="checkbox" id="eclass" onchange="filterE()" ><label for="eclass">E-Class</label>
+    <input type="checkbox" id="glb" onchange="filterGlb()" ><label for="glb">GLB</label>
+    <input type="checkbox" id="glc" onchange="filterGlc()"><label for="glc">GLC</label>
+    <input type="checkbox" id="gls" onchange="filterGls()" ><label for="gls">GLS</label>
+    <input type="checkbox" id="sclass" onchange="filterS()"><label for="sclass">S-Class</label>
+</span>
+<div class="modal-container" id="modal_container">
+    <div class="modal">
+        <h1>Register Form</h1>
+        <p>
+            <input type="text" placeholder="Tên của bạn"><br>
+            <input type="text" placeholder="Số điện thoại"><br>
+            <input type="text" placeholder="Địa chỉ"><br>
+            <button id="confirm" onclick="confirm1()">Xác nhận</button>
+            <button id="close">Đóng</button>
+
+        </p>
+    </div>
+</div>
+<div id="bform"></div>
+<div id="products"></div>
+<script src="web.js"></script>
+<script src="web2.js"></script>
+</body>
+</html>

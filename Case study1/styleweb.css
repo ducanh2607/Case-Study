@@ -1,0 +1,148 @@
+/*a {*/
+/*    text-decoration: none;*/
+/*    color: black;*/
+/*}*/
+
+/*a:hover {*/
+/*    color: green;*/
+/*    display: block;*/
+/*}*/
+/*.menu .logo a{*/
+/*    text-decoration: none;*/
+/*    color: #fff;*/
+/*    font-size: 100px;*/
+/*    font-weight: 600;*/
+/*}*/
+#option{
+    background-color: black;
+}
+.menu ul{
+    display: inline-flex;
+}
+.menu ul li {
+    list-style: none;
+    margin-left:86.9px;
+    background-color: black;
+}
+.menu ul li a{
+    text-decoration: none;
+    /*color: #fff;*/
+    color: White;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+.img{
+    background: url('background.jpg')no-repeat;
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    position: fixed;
+}
+.logo{
+    background-color: black;
+    color: white;
+    display: flex;
+}
+.background{
+    margin-top: 190px;
+}
+#midtext {
+    font-size: 50px;
+    color: white;
+}
+#midtext1{
+    margin-top: 20px;
+    color: grey;
+    font-size: 20px;
+}
+#search{
+    background-color: #d0cece;
+    margin-left: 700px;
+    font-size: 20px;
+    color: white;
+    width: 3000px;
+    height: 50px;
+    margin-top: 45px;
+}
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+#lasttext{
+    font-size: 20px;
+    padding: 7px;
+    margin-top: 80px;
+    background-color: black;
+    color: white;
+    border-color: white;
+}
+#products{
+    margin-top: 100px;
+    margin-left: 100px;
+    align-content: center;
+    align-items: center;
+}
+table{
+    background-color: azure;
+    text-align: left;
+}
+.all{
+    padding-left: 30px;
+ }
+#mua{
+    width: 150px;
+    text-align: center;
+    background-color: whitesmoke;
+
+}
+#filter1{
+
+    margin-left: 89px;
+
+}
+form {
+    margin-left: 500px;
+}
+.button {
+    padding-left: 50px;
+    color: gold;
+    border-radius: 15px;
+
+}
+
+.modal-container {
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    opacity: 0;
+    pointer-events: none;
+    top: 0;
+    left:430px;
+    height: 100vh;
+    width: 100vh;
+}
+
+.modal-container.show {
+    pointer-events: auto;
+    opacity: 1;
+}
+
+.modal {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 30px 50px;
+    width: 600px;
+    max-width: 100%;
+
+}
+
+
+
+

@@ -1,0 +1,77 @@
+.box1 {
+  font-size: 16px;
+  display: inline-block;
+  width: 30%;
+  padding: .25em .5em;
+  margin: 20px 10px 0 0;
+}
+.fs1 {
+  font-size: 2em;
+}
+.glyph {
+  float: left;
+  text-align: center;
+  padding: .75em;
+  margin: .4em 1.5em .75em 0;
+  width: 6em;
+  text-shadow: none;
+}
+
+.glyph input {
+  font-family: consolas, monospace;
+  font-size: 12px;
+  width: 100%;
+  text-align: center;
+  border: 0;
+  box-shadow: 0 0 0 1px #ccc;
+  padding: .2em;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+.btn-cart-custom{
+  font-size: 16px;
+  width: 100%;
+  text-align: center;
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid black;
+  margin: 10px;
+  height: 40px;
+  padding-top: 10px;
+}
+.btn-cart-custom-outline{
+  font-size: 16px;
+  width: 100%;
+  text-align: center;
+  background-color: #f13737;
+  border-radius: 5px;
+  color: white;
+  margin: 10px;
+  height: 40px;
+  padding-top: 10px;
+}
+.btn-cart-custom-outline:hover{
+  font-size: 16px;
+  width: 100%;
+  text-align: center;
+  background-color: #f51515;
+  color: whitesmoke;
+  border-radius: 5px;
+  border: 0 ;
+  margin: 10px;
+  height: 40px;
+  padding-top: 10px;
+}
+.btn-cart-custom:hover{
+  font-size: 16px;
+  width: 100%;
+  text-align: center;
+  color: white;
+  background-color: #ee3636;
+  border-radius: 5px;
+  border: 0;
+  margin: 10px;
+  height: 40px;
+  padding-top: 10px;
+}

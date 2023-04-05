@@ -1,0 +1,136 @@
+<app-home-header></app-home-header>
+<main>
+  <div class="hero_single version_1">
+    <div class="opacity-mask">
+      <div class="container">
+        <div class="row justify-content-lg-start justify-content-md-center">
+          <div class="col-xl-7 col-lg-8">
+            <h1>Delivery or Takeaway Food</h1>
+            <p>The best restaurants at the best price</p>
+          </div>
+        </div>
+        <!-- /row -->
+      </div>
+    </div>
+    <div class="wave hero"></div>
+  </div>
+  <div class="bg_gray">
+    <div class="container margin_60_0">
+      <div class="main_title">
+        <span><em></em></span>
+        <h2>Top Food</h2>
+        <a [routerLink]="['/view']">View All &rarr;</a>
+      </div>
+      <div class="row">
+        <div class="col-lg-4" *ngFor="let i of listImg | slice:0:12">
+          <div class="list_home">
+            <ul>
+              <li>
+                <a [routerLink]="['/store',i.product.store.id]">
+                  <figure>
+                    <img src="{{i.name}}" alt="" class="lazy" width="350" height="233">
+                  </figure>
+                  <em>{{i.product.store.nameStore}}</em>
+                  <h3>{{i.product.name}}</h3>
+                  <small>Price ${{i.product.productMethod.price}}</small>
+                  <ul>
+                    <li>Sold: {{i.product.productMethod.quantity}}</li>
+                  </ul>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="bg_gray">
+      <div class="container margin_60_40">
+        <div class="main_title">
+          <span><em></em></span>
+          <h2>All Store</h2>
+        </div>
+        <div class="row add_bottom_25">
+          <div class="col-lg-6" *ngFor="let s of stores| slice:0:6">
+            <div class="list_home">
+              <ul>
+                <li>
+                  <a [routerLink]="['/store',s.id]" >
+                    <figure>
+                      <img src="{{s.logo}}" alt="" class="lazy" width="350" height="233">
+                    </figure>
+                    <em>Viet Nam</em>
+                    <h3>{{s.nameStore}}</h3>
+                    <small>{{s.addressStore}}</small>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- /row -->
+        <div class="banner lazy" id="background-baner">
+          <div class="wrapper d-flex align-items-center opacity-mask" >
+            <div>
+              <small>FooYes Delivery</small>
+              <h3>We Deliver to your Office</h3>
+              <p>Enjoy a tasty food in minutes!</p>
+              <br>
+              <a [routerLink]="['/view']"  class="btn_1 gradient">Start Now!</a>
+            </div>
+          </div>
+          <!-- /wrapper -->
+        </div>
+        <!-- /banner -->
+      </div>
+    </div>
+    <!-- /bg_gray -->
+
+    <div class="shape_element_2">
+      <div class="container margin_60_0">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="box_how">
+                  <figure><img src="/assets/SVG_File/how_1.svg" alt="" width="150" height="167"
+                               class="lazy"></figure>
+                  <h3>Easly Order</h3>
+                </div>
+                <div class="box_how">
+                  <figure><img src="/assets/SVG_File/how_2.svg" alt="" width="130" height="145"
+                               class="lazy"></figure>
+                  <h3>Quick Delivery</h3>
+                </div>
+              </div>
+              <div class="col-lg-6 align-self-center">
+                <div class="box_how">
+                  <figure><img src="/assets/SVG_File/how_3.svg"  width="150" height="132"
+                               class="lazy"></figure>
+                  <h3>Enjoy Food</h3>
+                </div>
+              </div>
+            </div>
+<!--            <p class="text-center mt-3 d-block d-lg-none"><a href="#0" class="btn_1 medium gradient pulse_bt mt-2">Register-->
+<!--              Now!</a></p>-->
+          </div>
+          <div class="col-lg-5 offset-lg-1 align-self-center">
+            <div class="intro_txt">
+              <div class="main_title">
+                <span><em></em></span>
+                <h2>Start Ordering Now</h2>
+              </div>
+<!--              <p><a href="#0" class="btn_1 medium gradient pulse_bt mt-2">Register</a></p>-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /shape_element_2 -->
+  </div>
+</main>
+<!-- /main -->
+
+<app-home-footer></app-home-footer>
+<!-- /Sign In Modal -->

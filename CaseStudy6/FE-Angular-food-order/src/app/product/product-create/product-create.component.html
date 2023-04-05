@@ -1,0 +1,72 @@
+<app-home-header></app-home-header>
+<app-merchant-nav></app-merchant-nav>
+<!-- /Navigation-->
+<div class="content-wrapper" style="margin-top: 70px">
+  <div class="container-fluid">
+    <div class="box_general padding_bottom">
+      <div class="header_box version_2">
+        <h2><i class="fa fa-file"></i>Create Product</h2>
+      </div>
+      <form [formGroup]="formImage" (ngSubmit)="onSubmit()">
+        <div formGroupName="product">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label>Name</label>
+                <input type="text" class="form-control" placeholder="Enter name" formControlName="name">
+              </div>
+            </div>
+          </div>
+          <div class="row" hidden>
+            <div class="col-md-4" formGroupName="store">
+              <div class="form-group">
+                <label>Store</label>
+                <input type="text" class="form-control" placeholder="Enter store" formControlName="id">
+              </div>
+            </div>
+          </div>
+          <div formGroupName="productMethod">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Price</label>
+                  <input type="text" class="form-control" placeholder="Enter price" formControlName="price">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Description</label>
+                  <textarea type="text" class="form-control" placeholder="Enter description"
+                            formControlName="description"></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group" formGroupName="category">
+                  <label>Category</label>
+                  <div class="styled-select">
+                    <select formControlName="id">
+                      <option *ngFor="let c of categories" value="{{c.id}}">{{c.name}}</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div><label>Image</label></div>
+            <div><input type="file" class="drop-zone" (change)="submitImage($event)"></div>
+            <img src="{{path}}" alt="" width="360" height="300"/>
+          </div>
+        </div>
+        <button type="submit" class="btn_1 medium">Create</button>
+      </form>
+    </div>
+  </div>
+</div>
+

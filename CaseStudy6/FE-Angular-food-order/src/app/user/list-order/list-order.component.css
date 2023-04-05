@@ -1,0 +1,10 @@
+
+.code:hover{
+  color: #e02d2d;
+}
+.nav-custom{
+  width: 88%;margin-top: 15px;background-color: white;color: #c20505;
+}
+.nav-custom-out{
+  width: 88%;margin-top: 15px;background-color:  #e33e3e;color: white;
+}

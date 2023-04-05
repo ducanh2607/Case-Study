@@ -1,0 +1,116 @@
+<app-admin-nav></app-admin-nav>
+<div class="content-wrapper">
+  <div class="container-fluid" style="margin-top: 60px">
+    <!-- Example DataTables Card-->
+    <div class="card mb-3">
+      <div class="card-header"><i class="fa fa-table" style="padding-right: 10px"></i>Merchant List</div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+            <tr>
+              <th>#</th>
+              <th>Username</th>
+              <th>Email</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let user of users; index as i">
+              <td>{{i + 1}}</td>
+              <td><a href="#0" data-toggle="modal" data-target="#merchantDetail"
+                     (click)="getOneUser(user.id)">{{user?.username}}</a></td>
+              <td>{{user?.email}}</td>
+              <td><i *ngIf="user?.status == 1; else status_change" class="approved">Active</i>
+                <ng-template #status_change>
+                  <i *ngIf="user?.status == 0" class="cancel">Blocked</i>
+                </ng-template>
+              </td>
+              <td><a *ngIf="user?.status == 1; else active_change" href="#0" (click)="getIdAndStatus(user.id, 0)"
+                     data-toggle="modal" data-target="#blockModal"><strong>Block</strong></a>
+                <ng-template #active_change>
+                  <a *ngIf="user?.status == 0" href="#0" (click)="getIdAndStatus(user.id,1)"
+                     data-toggle="modal" data-target="#activeModal"><strong>Active</strong></a>
+                </ng-template>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- /tables-->
+  </div>
+  <!-- /container-fluid-->
+</div>
+<!-- /container-wrapper-->
+
+<!--Block Modal-->
+<div class="modal fade" id="blockModal" tabindex="-1" role="dialog" aria-labelledby="blockModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="blockModalLabel">Block merchant</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">Are you sure to want to block this merchant ?</div>
+      <div class="modal-body text-danger">**This will delete merchant's store and all products</div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+        <button class="btn btn-danger" (click)="activeUser()">Block</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Active Modal-->
+<div class="modal fade" id="activeModal" tabindex="-1" role="dialog" aria-labelledby="activeModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="activeModalLabel">Active merchant</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">Are you sure to want to active this merchant ?</div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+        <button class="btn btn-primary" (click)="activeUser()">Active</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Merchant Detail-->
+<div class="modal fade" id="merchantDetail" tabindex="-1" role="dialog" aria-labelledby="merchantDetailLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="merchantDetailLabel">Merchant Detail</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h4>{{user?.name}}</h4>
+        <ul class="booking_list">
+          <li><strong>Username</strong>{{user?.username}}</li>
+          <li><strong>Phone</strong>{{user?.phone}}</li>
+          <li><strong>Email</strong>{{user?.email}}</li>
+          <li *ngFor="let a of addresses; index as i"><strong>Address {{i+1}}</strong>{{a?.name}}</li>
+          <li><strong>Store</strong>{{store?.nameStore}}</li>
+          <li><strong>Store Revenue</strong>${{total}}</li>
+          <li><strong>Profit From Store</strong>${{total * 20 / 100}}</li>
+        </ul>
+        <p><a [routerLink]="['/store',store?.id]" class="btn_1" data-dismiss="modal"><i class="fa fa-fw fa-eye"></i>View Store</a></p>
+      </div>
+    </div>
+  </div>
+</div>

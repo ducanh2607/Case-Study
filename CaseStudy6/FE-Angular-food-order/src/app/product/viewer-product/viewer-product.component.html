@@ -1,0 +1,481 @@
+<app-home-header></app-home-header>
+<main>
+
+  <div class="page_header element_to_stick">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-8 col-lg-7 col-md-7 d-none d-md-block">
+
+
+        </div>
+        <div class="col-xl-4 col-lg-5 col-md-5">
+          <div class="search_bar_list">
+            <input type="text" class="form-control" placeholder="Name of dish" (change)="search($event)">
+            <button  type="submit" ><i class="icon_search"></i></button>
+          </div>
+        </div>
+      </div>
+      <!-- /row -->
+    </div>
+  </div>
+  <!-- /page_header -->
+
+  <!--  <div class="collapse" id="collapseMap">-->
+  <!--    <div id="map" class="map"></div>-->
+  <!--  </div>-->
+  <!-- /Map -->
+
+  <div class="container margin_30_20">
+    <div class="row">
+      <aside class="col-lg-3" id="sidebar_fixed">
+<!--        <a class="btn_map d-flex align-items-center justify-content-center" data-toggle="collapse"-->
+<!--           href="#collapseMap" aria-expanded="false" aria-controls="collapseMap">-->
+<!--          <span class="btn_map_txt"-->
+<!--                data-text-swap="Hide Map"-->
+<!--                data-text-original="View on Map">View on Map</span></a>-->
+
+        <!-- /type_delivery -->
+
+        <a class="btn_map mobile btn_filters" data-toggle="collapse" href="#collapseMap"><i
+          class="icon_pin_alt"></i></a>
+        <a href="#0" class="open_filters btn_filters"><i class="icon_adjust-vert"></i><span>Filters</span></a>
+
+        <div class="filter_col">
+          <div class="inner_bt clearfix">Filters<a href="#" class="open_filters"><i
+            class="icon_close"></i></a></div>
+          <div class="search_bar_list">
+            <input type="text" class="form-control" placeholder="Name of dish" (change)="search($event)">
+            <button  type="submit" ><i class="icon_search"></i></button>
+          </div>
+
+
+          <!-- /filter_type -->
+          <div class="filter_type">
+            <div class="inner_bt clearfix">Filters<a href="#" class="open_filters"><i
+              class="icon_close"></i></a></div>
+            <div class="filter_type">
+              <h4><a href="#filter_1" data-toggle="collapse" class="opened">Categories</a></h4>
+              <div class="collapse show" id="filter_1">
+                <ul>
+                  <li (change)="filter($event)">
+                    <label class="container_radio">All
+                      <input type="radio" name="filter_sort" value="0" checked>
+                      <span class="checkmark"></span>
+                    </label>
+                    <label class="container_radio"  *ngFor="let c of categories">{{c.name}}
+                      <input type="radio" name="filter_sort" value="{{c.id}}" >
+                      <span class="checkmark"></span>
+                    </label>
+
+                  </li>
+<!--                  <p><button href="#0" class="btn_1 outline full-width" (click)="filter(categoryId)">Filter</button></p>-->
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <div class="col-lg-9">
+        <div class="row">
+          <div class="col-12">
+            <h2 class="title_small">Food</h2>
+            <div class="owl-carousel owl-theme categories_carousel_in listing">
+              <div class="item">
+                <figure>
+                  <img src="img/cat_listing_placeholder.png" data-src="img/cat_listing_1.jpg" alt=""
+                       class="owl-lazy">
+                  <a href="#0"><h3>Pizza</h3></a>
+                </figure>
+              </div>
+              <div class="item">
+                <figure>
+                  <img src="img/cat_listing_placeholder.png" data-src="img/cat_listing_2.jpg" alt=""
+                       class="owl-lazy">
+                  <a href="#0"><h3>Sushi</h3></a>
+                </figure>
+              </div>
+              <div class="item">
+                <figure>
+                  <img src="img/cat_listing_placeholder.png" data-src="img/cat_listing_3.jpg" alt=""
+                       class="owl-lazy">
+                  <a href="#0"><h3>Dessert</h3></a>
+                </figure>
+              </div>
+              <div class="item">
+                <figure>
+                  <img src="img/cat_listing_placeholder.png" data-src="img/cat_listing_4.jpg" alt=""
+                       class="owl-lazy">
+                  <a href="#0"><h3>Hamburgher</h3></a>
+                </figure>
+              </div>
+              <div class="item">
+                <figure>
+                  <img src="img/cat_listing_placeholder.png" data-src="img/cat_listing_5.jpg" alt=""
+                       class="owl-lazy">
+                  <a href="#0"><h3>Ice Cream</h3></a>
+                </figure>
+              </div>
+              <div class="item">
+                <figure>
+                  <img src="img/cat_listing_placeholder.png" data-src="img/cat_listing_6.jpg" alt=""
+                       class="owl-lazy">
+                  <a href="#0"><h3>Kebab</h3></a>
+                </figure>
+              </div>
+              <div class="item">
+                <figure>
+                  <img src="img/cat_listing_placeholder.png" data-src="img/cat_listing_7.jpg" alt=""
+                       class="owl-lazy">
+                  <a href="#0"><h3>Italian</h3></a>
+                </figure>
+              </div>
+              <div class="item">
+                <figure>
+                  <img src="img/cat_listing_placeholder.png" data-src="img/cat_listing_8.jpg" alt=""
+                       class="owl-lazy">
+                  <a href="#0"><h3>Chinese</h3></a>
+                </figure>
+              </div>
+            </div>
+            <!-- /carousel -->
+          </div>
+        </div>
+        <!-- /row -->
+
+        <div class="promo">
+          <h3>All Food Here!</h3>
+          <i class="icon-food_icon_delivery"></i>
+        </div>
+        <!-- /promo -->
+
+        <div class="row">
+<!--          <div class="col-12"><h2 class="title_small">Top Rated</h2></div>-->
+          <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6" *ngFor="let l of listImage">
+            <div class="strip">
+              <figure>
+                <!--               <span class="ribbon off">15% off</span>-->
+                <img src="{{l.name}}" data-src="img/location_1.jpg" class="img-fluid lazy"
+                     alt="">
+                <a [routerLink]="['/store',l.product.store.id]" class="strip_info">
+                  <small>{{l.product.productMethod.category.name}}</small>
+                  <div class="item_title">
+                    <div>{{l.product.name}}</div>
+                    <small>{{l.product.store.addressStore}}</small>
+                  </div>
+                </a>
+              </figure>
+              <ul>
+                <li><span class="take yes">${{l.product.productMethod.price}}</span></li>
+                <li><p style="margin-top: 10px">Sold {{l.product.productMethod.quantity}}</p></li>
+              </ul>
+            </div>
+          </div>
+          <!-- /strip grid -->
+          <!--          <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">-->
+          <!--            <div class="strip">-->
+          <!--              <figure>-->
+          <!--                <img src="img/lazy-placeholder.png" data-src="img/location_2.jpg" class="img-fluid lazy"-->
+          <!--                     alt="">-->
+          <!--                <a href="detail-restaurant.html" class="strip_info">-->
+          <!--                  <small>Burghers</small>-->
+          <!--                  <div class="item_title">-->
+          <!--                    <h3>Best Burghers</h3>-->
+          <!--                    <small>27 Old Gloucester St</small>-->
+          <!--                  </div>-->
+          <!--                </a>-->
+          <!--              </figure>-->
+          <!--              <ul>-->
+          <!--                <li><span class="take no">Takeaway</span> <span class="deliv yes">Delivery</span></li>-->
+          <!--                <li>-->
+          <!--                  <div class="score"><strong>9.5</strong></div>-->
+          <!--                </li>-->
+          <!--              </ul>-->
+          <!--            </div>-->
+          <!--          </div>-->
+          <!-- /strip grid -->
+          <!--          <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">-->
+          <!--            <div class="strip">-->
+          <!--              <figure>-->
+          <!--                <span class="ribbon off">15% off</span>-->
+          <!--                <img src="img/lazy-placeholder.png" data-src="img/location_3.jpg" class="img-fluid lazy"-->
+          <!--                     alt="">-->
+          <!--                <a href="detail-restaurant.html" class="strip_info">-->
+          <!--                  <small>Vegetarian</small>-->
+          <!--                  <div class="item_title">-->
+          <!--                    <h3>Vego Life</h3>-->
+          <!--                    <small>27 Old Gloucester St</small>-->
+          <!--                  </div>-->
+          <!--                </a>-->
+          <!--              </figure>-->
+          <!--              <ul>-->
+          <!--                <li><span class="take yes">Takeaway</span> <span class="deliv no">Delivery</span></li>-->
+          <!--                <li>-->
+          <!--                  <div class="score"><strong>7.5</strong></div>-->
+          <!--                </li>-->
+          <!--              </ul>-->
+          <!--            </div>-->
+          <!--          </div>-->
+          <!--          &lt;!&ndash; /strip grid &ndash;&gt;-->
+          <!--          <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">-->
+          <!--            <div class="strip">-->
+          <!--              <figure>-->
+          <!--                <img src="img/lazy-placeholder.png" data-src="img/location_4.jpg" class="img-fluid lazy"-->
+          <!--                     alt="">-->
+          <!--                <a href="detail-restaurant.html" class="strip_info">-->
+          <!--                  <small>Japanese</small>-->
+          <!--                  <div class="item_title">-->
+          <!--                    <h3>Sushi Temple</h3>-->
+          <!--                    <small>27 Old Gloucester St</small>-->
+          <!--                  </div>-->
+          <!--                </a>-->
+          <!--              </figure>-->
+          <!--              <ul>-->
+          <!--                <li><span class="take no">Takeaway</span> <span class="deliv no">Delivery</span></li>-->
+          <!--                <li>-->
+          <!--                  <div class="score"><strong>9.5</strong></div>-->
+          <!--                </li>-->
+          <!--              </ul>-->
+          <!--            </div>-->
+          <!--          </div>-->
+          <!--          &lt;!&ndash; /strip grid &ndash;&gt;-->
+          <!--          <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">-->
+          <!--            <div class="strip">-->
+          <!--              <figure>-->
+          <!--                <img src="img/lazy-placeholder.png" data-src="img/location_5.jpg" class="img-fluid lazy"-->
+          <!--                     alt="">-->
+          <!--                <a href="detail-restaurant.html" class="strip_info">-->
+          <!--                  <small>Pizza</small>-->
+          <!--                  <div class="item_title">-->
+          <!--                    <h3>Auto Pizza</h3>-->
+          <!--                    <small>27 Old Gloucester St</small>-->
+          <!--                  </div>-->
+          <!--                </a>-->
+          <!--              </figure>-->
+          <!--              <ul>-->
+          <!--                <li><span class="take yes">Takeaway</span> <span class="deliv no">Delivery</span></li>-->
+          <!--                <li>-->
+          <!--                  <div class="score"><strong>7.0</strong></div>-->
+          <!--                </li>-->
+          <!--              </ul>-->
+          <!--            </div>-->
+          <!--          </div>-->
+          <!--          &lt;!&ndash; /strip grid &ndash;&gt;-->
+          <!--          <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">-->
+          <!--            <div class="strip">-->
+          <!--              <figure>-->
+          <!--                <img src="img/lazy-placeholder.png" data-src="img/location_6.jpg" class="img-fluid lazy"-->
+          <!--                     alt="">-->
+          <!--                <a href="detail-restaurant.html" class="strip_info">-->
+          <!--                  <small>Burghers</small>-->
+          <!--                  <div class="item_title">-->
+          <!--                    <h3>Alliance</h3>-->
+          <!--                    <small>27 Old Gloucester St</small>-->
+          <!--                  </div>-->
+          <!--                </a>-->
+          <!--              </figure>-->
+          <!--              <ul>-->
+          <!--                <li><span class="take no">Takeaway</span> <span class="deliv yes">Delivery</span></li>-->
+          <!--                <li>-->
+          <!--                  <div class="score"><strong>8.9</strong></div>-->
+          <!--                </li>-->
+          <!--              </ul>-->
+          <!--            </div>-->
+          <!--          </div>-->
+          <!--          &lt;!&ndash; /strip grid &ndash;&gt;-->
+          <!--          <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">-->
+          <!--            <div class="strip">-->
+          <!--              <figure>-->
+          <!--                <img src="img/lazy-placeholder.png" data-src="img/location_7.jpg" class="img-fluid lazy"-->
+          <!--                     alt="">-->
+          <!--                <a href="detail-restaurant.html" class="strip_info">-->
+          <!--                  <small>Chinese</small>-->
+          <!--                  <div class="item_title">-->
+          <!--                    <h3>Alliance</h3>-->
+          <!--                    <small>27 Old Gloucester St</small>-->
+          <!--                  </div>-->
+          <!--                </a>-->
+          <!--              </figure>-->
+          <!--              <ul>-->
+          <!--                <li><span class="take no">Takeaway</span> <span class="deliv yes">Delivery</span></li>-->
+          <!--                <li>-->
+          <!--                  <div class="score"><strong>8.9</strong></div>-->
+          <!--                </li>-->
+          <!--              </ul>-->
+          <!--            </div>-->
+          <!--          </div>-->
+          <!--          &lt;!&ndash; /strip grid &ndash;&gt;-->
+          <!--          <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">-->
+          <!--            <div class="strip">-->
+          <!--              <figure>-->
+          <!--                <img src="img/lazy-placeholder.png" data-src="img/location_8.jpg" class="img-fluid lazy"-->
+          <!--                     alt="">-->
+          <!--                <a href="detail-restaurant.html" class="strip_info">-->
+          <!--                  <small>Sushi</small>-->
+          <!--                  <div class="item_title">-->
+          <!--                    <h3>Dragon Tower</h3>-->
+          <!--                    <small>27 Old Gloucester St</small>-->
+          <!--                  </div>-->
+          <!--                </a>-->
+          <!--              </figure>-->
+          <!--              <ul>-->
+          <!--                <li><span class="take yes">Takeaway</span> <span class="deliv no">Delivery</span></li>-->
+          <!--                <li>-->
+          <!--                  <div class="score"><strong>8.9</strong></div>-->
+          <!--                </li>-->
+          <!--              </ul>-->
+          <!--            </div>-->
+          <!--          </div>-->
+          <!--          &lt;!&ndash; /strip grid &ndash;&gt;-->
+          <!--          <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">-->
+          <!--            <div class="strip">-->
+          <!--              <figure>-->
+          <!--                <img src="img/lazy-placeholder.png" data-src="img/location_9.jpg" class="img-fluid lazy"-->
+          <!--                     alt="">-->
+          <!--                <a href="detail-restaurant.html" class="strip_info">-->
+          <!--                  <small>Mexican</small>-->
+          <!--                  <div class="item_title">-->
+          <!--                    <h3>El Paso Tacos</h3>-->
+          <!--                    <small>27 Old Gloucester St</small>-->
+          <!--                  </div>-->
+          <!--                </a>-->
+          <!--              </figure>-->
+          <!--              <ul>-->
+          <!--                <li><span class="take yes">Takeaway</span> <span class="deliv yes">Delivery</span></li>-->
+          <!--                <li>-->
+          <!--                  <div class="score"><strong>8.9</strong></div>-->
+          <!--                </li>-->
+          <!--              </ul>-->
+          <!--            </div>-->
+          <!--          </div>-->
+          <!--          &lt;!&ndash; /strip grid &ndash;&gt;-->
+          <!--          <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">-->
+          <!--            <div class="strip">-->
+          <!--              <figure>-->
+          <!--                <img src="img/lazy-placeholder.png" data-src="img/location_10.jpg"-->
+          <!--                     class="img-fluid lazy" alt="">-->
+          <!--                <a href="detail-restaurant.html" class="strip_info">-->
+          <!--                  <small>Bakery</small>-->
+          <!--                  <div class="item_title">-->
+          <!--                    <h3>Monnalisa</h3>-->
+          <!--                    <small>27 Old Gloucester St</small>-->
+          <!--                  </div>-->
+          <!--                </a>-->
+          <!--              </figure>-->
+          <!--              <ul>-->
+          <!--                <li><span class="take yes">Takeaway</span> <span class="deliv yes">Delivery</span></li>-->
+          <!--                <li>-->
+          <!--                  <div class="score"><strong>8.9</strong></div>-->
+          <!--                </li>-->
+          <!--              </ul>-->
+          <!--            </div>-->
+          <!--          </div>-->
+          <!--          &lt;!&ndash; /strip grid &ndash;&gt;-->
+          <!--          <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">-->
+          <!--            <div class="strip">-->
+          <!--              <figure>-->
+          <!--                <img src="img/lazy-placeholder.png" data-src="img/location_11.jpg"-->
+          <!--                     class="img-fluid lazy" alt="">-->
+          <!--                <a href="detail-restaurant.html" class="strip_info">-->
+          <!--                  <small>Mexican</small>-->
+          <!--                  <div class="item_title">-->
+          <!--                    <h3>Guachamole</h3>-->
+          <!--                    <small>135 Newtownards Road</small>-->
+          <!--                  </div>-->
+          <!--                </a>-->
+          <!--              </figure>-->
+          <!--              <ul>-->
+          <!--                <li><span class="take yes">Takeaway</span> <span class="deliv yes">Delivery</span></li>-->
+          <!--                <li>-->
+          <!--                  <div class="score"><strong>8.9</strong></div>-->
+          <!--                </li>-->
+          <!--              </ul>-->
+          <!--            </div>-->
+          <!--          </div>-->
+          <!--          &lt;!&ndash; /strip grid &ndash;&gt;-->
+          <!--          <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">-->
+          <!--            <div class="strip">-->
+          <!--              <figure>-->
+          <!--                <img src="img/lazy-placeholder.png" data-src="img/location_12.jpg"-->
+          <!--                     class="img-fluid lazy" alt="">-->
+          <!--                <a href="detail-restaurant.html" class="strip_info">-->
+          <!--                  <small>Chinese</small>-->
+          <!--                  <div class="item_title">-->
+          <!--                    <h3>Pechino Express</h3>-->
+          <!--                    <small>27 Old Gloucester St</small>-->
+          <!--                  </div>-->
+          <!--                </a>-->
+          <!--              </figure>-->
+          <!--              <ul>-->
+          <!--                <li><span class="take no">Takeaway</span> <span class="deliv yes">Delivery</span></li>-->
+          <!--                <li>-->
+          <!--                  <div class="score"><strong>8.9</strong></div>-->
+          <!--                </li>-->
+          <!--              </ul>-->
+          <!--            </div>-->
+          <!--          </div>-->
+          <!-- /strip grid -->
+        </div>
+        <!-- /row -->
+        <div class="pagination_fg">
+
+        </div>
+      </div>
+      <!-- /col -->
+    </div>
+  </div>
+  <!-- /container -->
+
+</main>
+<!-- /main -->
+
+                                                                                                       v
+<!-- Sign In Modal -->
+<div id="sign-in-dialog" class="zoom-anim-dialog mfp-hide">
+  <div class="modal_header">
+    <h3>Sign In</h3>
+  </div>
+  <form>
+    <div class="sign-in-wrapper">
+      <a href="#0" class="social_bt facebook">Login with Facebook</a>
+      <a href="#0" class="social_bt google">Login with Google</a>
+      <div class="divider"><span>Or</span></div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" class="form-control" name="email" id="email">
+        <i class="icon_mail_alt"></i>
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" class="form-control" name="password" id="password" value="">
+        <i class="icon_lock_alt"></i>
+      </div>
+      <div class="clearfix add_bottom_15">
+        <div class="checkboxes float-left">
+          <label class="container_check">Remember me
+            <input type="checkbox">
+            <span class="checkmark"></span>
+          </label>
+        </div>
+        <div class="float-right"><a id="forgot" href="javascript:void(0);">Forgot Password?</a></div>
+      </div>
+      <div class="text-center">
+        <input type="submit" value="Log In" class="btn_1 full-width mb_5">
+        Don’t have an account? <a href="register.html">Sign up</a>
+      </div>
+      <div id="forgot_pw">
+        <div class="form-group">
+          <label>Please confirm login email below</label>
+          <input type="email" class="form-control" name="email_forgot" id="email_forgot">
+          <i class="icon_mail_alt"></i>
+        </div>
+        <p>You will receive an email containing a link allowing you to reset your password to a new preferred
+          one.</p>
+        <div class="text-center"><input type="submit" value="Reset Password" class="btn_1"></div>
+      </div>
+    </div>
+  </form>
+  <!--form -->
+</div>
+<app-home-footer></app-home-footer>
+
