@@ -67,8 +67,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .antMatchers("/**/**/**").permitAll()
 //                .antMatchers("/**/**/**/**").permitAll()
                 .antMatchers("/accounts/**/**/**").permitAll()
-//                .antMatchers("/accounts/**/**").permitAll()
-//                .antMatchers("/accounts/**").permitAll()
+                .antMatchers("/users/list-friend/**").permitAll()
+                .antMatchers("/users/count-friend/**").permitAll()
                 .antMatchers("/users/all").hasAuthority("ADMIN")
                 .anyRequest().authenticated()
                 .and().csrf().disable();

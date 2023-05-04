@@ -136,5 +136,17 @@ public class AccountController {
             }
         }
     }
+    @PutMapping("/logout/{id}")
+    public ResponseEntity<Users> logOut(@PathVariable Long id, @RequestBody Users user){
+        Optional<Users> usersCheck = this.userService.findById(id);
+        if (usersCheck.isPresent()){
+            user.setStatus(false);
+            this.userService.save(user);
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        }else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
 
 }

@@ -11,7 +11,7 @@ import java.util.Optional;
 
 public class RoleService implements ICRUDService<Role, Long> {
     private final IRoleRepository roleRepository;
-    @Autowired
+
     public RoleService(IRoleRepository roleRepository) {
         this.roleRepository = roleRepository;
     }
