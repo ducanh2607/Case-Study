@@ -12,7 +12,8 @@ import Swal from 'sweetalert2';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit{
-  formUser!: FormGroup;user!: Users;
+  formUser!: FormGroup;
+  user!: Users;
 
 
   constructor(private router: Router,

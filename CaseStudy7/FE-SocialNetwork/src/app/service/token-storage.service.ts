@@ -1,19 +1,36 @@
 import { Injectable } from '@angular/core';
 import {Users} from "../model/users";
 import {Router} from "@angular/router";
+import {AuthService} from "./auth.service";
+import {HttpHeaders} from "@angular/common/http";
 const TOKEN_KEY = 'auth-token';
 const USER_KEY = 'auth-user';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class TokenStorageService {
+  httpOptions: any;
 
-  constructor(private router: Router) { }
+
+  constructor(private router: Router,
+              private auth: AuthService) {
+
+  }
+  getHttpOption(){
+    return  this.httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' +  this.getUser().token
+      })}
+  }
   public signOut(){
-    window.localStorage.clear();
-    window.sessionStorage.clear();
-    this.router.navigate(['']);
+    this.auth.logout(this.getUser().id).subscribe(data=>{
+      window.localStorage.clear()
+      window.sessionStorage.clear()
+      this.router.navigate([''])
+    })
   }
   public saveTokenLocal(token: string){
     window.localStorage.removeItem(TOKEN_KEY);

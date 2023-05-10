@@ -15,6 +15,7 @@ import {AngularFireDatabaseModule} from "@angular/fire/compat/database";
 import {ToastrModule} from "ngx-toastr";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { NewFeedComponent } from './new-feed/new-feed.component';
+import {NgImageSliderModule} from "ng-image-slider";
 
 @NgModule({
   declarations: [
@@ -23,25 +24,26 @@ import { NewFeedComponent } from './new-feed/new-feed.component';
     RegisterComponent,
     NewFeedComponent
   ],
-  imports: [
-    ToastrModule.forRoot({
-      timeOut: 100000,
-      positionClass: 'toast-top-right',
-      preventDuplicates: true,
-    }),
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    AngularFireStorageModule,
-    AngularFireDatabaseModule,
-    HttpClientModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    ReactiveFormsModule,
-    FormsModule,
-    BrowserAnimationsModule,
+    imports: [
+        ToastrModule.forRoot({
+            timeOut: 100000,
+            positionClass: 'toast-top-right',
+            preventDuplicates: true,
+        }),
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        AngularFireStorageModule,
+        AngularFireDatabaseModule,
+        HttpClientModule,
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+        ReactiveFormsModule,
+        FormsModule,
+        BrowserAnimationsModule,
+        NgImageSliderModule,
 
-  ],
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

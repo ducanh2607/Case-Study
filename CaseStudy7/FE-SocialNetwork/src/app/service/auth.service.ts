@@ -29,4 +29,8 @@ export class AuthService {
   register(user: Users): Observable<any>{
     return this.http.post(`${apiUrl}/accounts/register`, user);
   }
+  logout(id: number): Observable<any>{
+    // @ts-ignore
+    return this.http.put(`${apiUrl}/accounts/logout/${id}`);
+  }
 }
