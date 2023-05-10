@@ -22,4 +22,5 @@ public class PostLike {
     @ManyToOne
     @JoinColumn(name = "post_id")
     private Post post;
+
 }
