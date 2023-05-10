@@ -13,6 +13,8 @@ import {ImagePost} from "../model/image-post";
 import Swal from "sweetalert2";
 import {finalize} from "rxjs";
 import { LocalDateTime } from '@js-joda/core';
+import {PostLike} from "../model/post-like";
+import {PostComment} from "../model/post-comment";
 
 
 @Component({
@@ -36,13 +38,22 @@ export class NewFeedComponent implements OnInit {
       id: new FormControl('1')
     })
   })
+  postLike!: PostLike
+  postComment!: PostComment
   imgSrc: string[] = []
   imageFiles: File[] = []
   listImgCreate: ImagePost[] = []
   user!: Users
-  listImgPost: ImagePost[][] = []
-
-
+  listLiked: any[]=[]
+  formLike: FormGroup = new FormGroup({
+    id: new FormControl(''),
+    user: new FormGroup({
+      id: new FormControl('')
+    }),
+    post: new FormGroup({
+      id: new FormControl('')
+    })
+  })
 
   constructor(private router: Router,
               private tokenStorageService: TokenStorageService,
@@ -71,8 +82,10 @@ export class NewFeedComponent implements OnInit {
     this.postService.findAllPostNewFeed(id).subscribe(data=>{
       this.listPost = data
       this.findImagesByPostId(this.listPost)
+      this.findAllLikeByPost(this.listPost)
     })
   }
+
 
   createPost() {
     this.post = this.formPost.value
@@ -125,6 +138,7 @@ export class NewFeedComponent implements OnInit {
         this.formPost.get("postStatus")?.get("id").setValue(1);
         Swal.fire("Success", "Create post successfully");
         document.getElementById("btn-close")?.click()
+        this.findAllPostNewFeed(this.tokenStorageService.getUser().id)
       });
     });
   }
@@ -185,7 +199,66 @@ export class NewFeedComponent implements OnInit {
       }
     });
   }
+  findAllLikeByPost(posts : Post[]){
+    const promises: Promise<PostLike[]>[] = [];
+    for (let i = 0; i < posts.length; i++) {
+      // @ts-ignore
+      const promise = this.postService.findLikeByPost(posts[i].id).toPromise();
+      promises.push(promise);
+    }
+    return Promise.all(promises).then(postLike => {
+      for (let i = 0; i < postLike.length; i++) {
+        this.listLiked[i] = [];
+        for (let j = 0; j < postLike[i].length; j++) {
+          if (postLike[i][j] !== undefined) {
+            this.listLiked[i].push(postLike[i][j]);
+          }
+        }
+      }
+    });
+  }
+
+  likePost(index:number, id: any){
+    this.postLike = this.formLike.value
+    // @ts-ignore
+    this.postLike.user.id = this.tokenStorageService.getUser().id
+    let postTest !: Post
+    // @ts-ignore
+    this.postLike.post.id = id
+    let flag = true
+    for (let i = 0; i < this.listLiked[index].length; i++) {
+      // @ts-ignore
+      if(this.postLike.user.id == this.listLiked[index][i].user.id && this.postLike.post.id == this.listLiked[index][i].post.id){
+        flag = false
+       break;
+      }
+    }
+    if (!flag){
+      // @ts-ignore
+      this.postService.deletePostLikeByUserAndPost(this.postLike.user.id, this.postLike.post.id).subscribe(()=>{
+      })
+    }else {
+      this.postService.likePost(this.postLike).subscribe(()=>{
+      })
+    }
+    this.ngOnInit()
+  }
+  showLike = ''
+  liked(postLike: PostLike[]){
+
+    let flag = false
+    for (let i = 0; i < postLike.length; i++) {
+      // @ts-ignore
+      if (postLike[i].user.id == this.user.id){
+        flag = true
+        break
+      }
+    }
+    return flag
+  }
+
+
   click(){
-    console.log(this.listImg)
+    console.log(this.listLiked)
   }
 }
