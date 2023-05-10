@@ -6,7 +6,6 @@ import com.example.besocialnetwork.security.jwt.JwtResponse;
 import com.example.besocialnetwork.security.jwt.JwtService;
 import com.example.besocialnetwork.service.impl.RoleService;
 import com.example.besocialnetwork.service.impl.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -31,7 +30,7 @@ public class AccountController {
     private final AuthenticationManager authenticationManager;
     private final JwtService jwtService;
 
-    @Autowired
+
     public AccountController(UserService userService, PasswordEncoder passwordEncoder, RoleService roleService, AuthenticationManager authenticationManager, JwtService jwtService) {
         this.userService = userService;
         this.passwordEncoder = passwordEncoder;
@@ -57,16 +56,7 @@ public class AccountController {
         }else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }}
-//        Authentication authentication = this.authenticationManager.authenticate(
-//                new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword())
-//        );
-//        SecurityContextHolder.getContext().setAuthentication(authentication);
-//        String jwt = this.jwtService.generateTokenLogin(authentication);
-//        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-//        Users currentUser = this.userService.findByUsername(user.getUsername()).get();
-//        currentUser.setStatus(true);
-//        this.userService.save(currentUser);
-//        return ResponseEntity.ok(new JwtResponse(jwt, currentUser.getId(), userDetails.getUsername(), currentUser.getName(), userDetails.getAuthorities(), currentUser.getEmail(), currentUser.getPhone(), currentUser.getBirthday(), currentUser.isStatus(), currentUser.isActive(), currentUser.getGender(), currentUser.getShowFriend(), currentUser.getCommentPermission(), currentUser.getAvatar(), currentUser.getAddress(), currentUser.getHobby()));
+
 
 
     @PostMapping("/register")
@@ -80,6 +70,7 @@ public class AccountController {
                 Role role = roleCheck.get();
                 user.setRoles(new HashSet<>());
                 user.getRoles().add(role);
+                user.setAvatar("https://firebasestorage.googleapis.com/v0/b/case-study-63dd5.appspot.com/o/avatar%2F1683606114893_avatar1.jpg?alt=media&token=6bec9685-dee4-4e2d-a6ee-1ea90d87ead3");
                 return new ResponseEntity<>(this.userService.save(user), HttpStatus.CREATED);
             }}
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -137,11 +128,11 @@ public class AccountController {
         }
     }
     @PutMapping("/logout/{id}")
-    public ResponseEntity<Users> logOut(@PathVariable Long id, @RequestBody Users user){
+    public ResponseEntity<Users> logOut(@PathVariable Long id){
         Optional<Users> usersCheck = this.userService.findById(id);
         if (usersCheck.isPresent()){
-            user.setStatus(false);
-            this.userService.save(user);
+            usersCheck.get().setStatus(false);
+            this.userService.save(usersCheck.get());
             return new ResponseEntity<>(HttpStatus.CREATED);
         }else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

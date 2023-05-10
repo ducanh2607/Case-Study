@@ -24,5 +24,5 @@ public class FriendRequest {
     @ManyToOne
     @JoinColumn(name = "userReceive_id")
     private Users usersReceive;
-    private boolean status;
+    private boolean status = false;
 }
